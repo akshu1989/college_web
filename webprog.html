@@ -1,0 +1,78 @@
+<html>
+<head>
+    <title> Contact Details Form </title>
+    <script type="text/javascript">
+        function validate() {
+            if (document.myForm.Name.value == "") {
+                alert("Please provide your Name!!");
+                document.myForm.Name.focus();
+                return false;
+            }
+
+            if (document.myForm.Address.value == "") {
+                alert("Please provide your Address!!");
+                document.myForm.Address.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function validateemail() {
+            var x = document.myForm.email.value;
+            var atposition = x.indexOf("@");
+            var dotposition = x.lastIndexOf(".");
+            if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
+                alert("Please enter a valid e-mail address \n atpostion:" + atposition + "\n dotposition:" + dotposition);
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body bgcolor="peachpuff">
+    <center>
+        <h2> Contact Details Form </h2>
+        <form name="myForm" onsubmit="return(validate());return validateemail()">
+            <table cellspacing="2" cellpadding="2" border="1">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="Name" /></td>
+                </tr>
+                <tr>
+                    <td>Email Id</td>
+                    <td><input type="text" name="email" /></td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td><input type="text" name="Phone" maxlength="10" pattern="\d{10}" /></td>
+                </tr><br>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="Student">Student
+                        <input type="checkbox" name="Employee">Employee
+                        <input type="checkbox" name="Other">Other
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="Male">Male
+                        <input type="radio" name="Female">Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea id="Address" cols="20" rows="10"></textarea></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Submit" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</body>
+
+</html>
