@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title> Contact Details Form </title>
     <script type="text/javascript">
@@ -27,13 +28,24 @@
             }
             return true;
         }
+
+        function phoneNumberCheck() {
+            var regEx = "^\+{0,2}([\-\.])?(\(?\d{0,3}\))?([\-\.])?\(?\d{0,3}\)?([\-\.])?\d{3}([\-\.])?\d{4}";
+            if (document.myForm.phone.value != "" && document.myForm.phone.value.match(regEx)) {
+                return true;
+            }
+            else {
+                alert("Please enter a valid phone number.");
+                return false;
+            }
+        }    
     </script>
 </head>
 
 <body bgcolor="peachpuff">
     <center>
         <h2> Contact Details Form </h2>
-        <form name="myForm" onsubmit="return(validate());return validateemail()">
+        <form name="myForm" onsubmit="return (validate() && validateemail() && phoneNumberCheck())">
             <table cellspacing="2" cellpadding="2" border="1">
                 <tr>
                     <td>Name</td>
@@ -45,7 +57,7 @@
                 </tr>
                 <tr>
                     <td>Phone Number</td>
-                    <td><input type="text" name="Phone" maxlength="10" pattern="\d{10}" /></td>
+                    <td><input type="text" name="phone" maxlength="10" /></td>
                 </tr><br>
                 <tr>
                     <td>
